@@ -1,3 +1,6 @@
+# Se por alguma razão para nossa utilização for melhor que o banco seja atualizado após cada query,
+# atualizar o valor do autoflush para true. 
+
 import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
