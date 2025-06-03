@@ -14,3 +14,4 @@ Objetivos:
 3. criar um arquivo chamado ".env" na pasta app com o seguinte conteúdo:
 DATABASE_URL=postgresql://SEU_USUARIO:SUA_SENHA@localhost:5432/c2s;
 4. Criar as tabelas de dados com o comando "python -m app.init_db";
+5. Popular o banco com dados fictícios usando "$env:PYTHONPATH="."; python -m app.scripts.populate_auto"
