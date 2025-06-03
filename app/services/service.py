@@ -1,7 +1,9 @@
 # hasattr usado para limitar erros quando o llm responde com campos inexistentes
+# func usado para que a busca não seja case sensitive
 
 from sqlalchemy.orm import Session
-from app.modelos.autos import Autos
+from app.models.autos import Autos
+from sqlalchemy import func
 
 def get_auto(params: dict, db: Session):
     query = db.query(Autos)
@@ -11,7 +13,7 @@ def get_auto(params: dict, db: Session):
         field = entry[0]
         value = entry[1]
         if hasattr(Autos, field):
-            query = query.filter(getattr(Autos, field) == value)
+            query = query.filter(func.lower(getattr(Autos, field)) == value.lower())
     results = query.all()
 
     res = []

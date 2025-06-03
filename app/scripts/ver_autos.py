@@ -1,5 +1,5 @@
 from app.database.connection import SessionLocal
-from app.modelos.autos import Autos
+from app.models.autos import Autos
 
 session = SessionLocal()
 

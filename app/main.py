@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from app.database.connection import SessionLocal
-from app.mcp import get_auto
+from app.services.service import get_auto
 
 app = FastAPI()
 

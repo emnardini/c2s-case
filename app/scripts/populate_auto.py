@@ -1,5 +1,5 @@
 import random
-from app.modelos.autos import Autos
+from app.models.autos import Autos
 from app.database.connection import SessionLocal
 import sys
 
