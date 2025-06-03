@@ -35,13 +35,14 @@ MAP = {
 }
 
 def max_price(prompt):
-    if "km" in prompt or "quilometros" in prompt or "quilômetros":
+    if "km" in prompt or "quilometros" in prompt or "quilômetros" in prompt:
         return None
     num = re.findall(r"\d+", prompt)
     if not num:
         return None
     price = num[0].replace(".", "")
-    return int(price) * 1000 if "mil" in prompt else int(price)
+    result = int(price) * 1000 if "mil" in prompt else int(price)
+    return result
 
 def max_km(prompt):
     if "r$" in prompt or "reais" in prompt or "mil reais" in prompt:
@@ -73,7 +74,6 @@ def user_prompt():
         filters["max_km"] = km
     return filters
 
-
 def send_to_server(filters):
     try:
         response = requests.post(BASE_URL, json=filters)
@@ -90,6 +90,24 @@ def show_results(results):
     print(f"{len(results)} carros encontrados:\n")
     for item in results:
         print(f"- {item['marca']} {item['modelo']} | {item['ano']} | {item['cor']} | {item['kilometragem']} km | R$ {item['preco']:.2f}")
+
+def parse_user_request(prompt):
+    filters = {}
+    prompt = prompt.lower()
+    for field in MAP:
+        possible_terms = MAP[field]
+        for term in possible_terms:
+            if str(term).lower() in prompt:
+                filters[field] = term
+                break
+    price = max_price(prompt)
+    if price:
+        filters["max_price"] = price
+    km = max_km(prompt)
+    if km:
+        filters["max_km"] = km
+    print(f"[DEBUG] Filtros finais extraídos: {filters}")  # <-- aqui
+    return filters
 
 def main():
     print("Iniciando busca de veículos...")

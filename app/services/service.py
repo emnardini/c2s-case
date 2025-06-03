@@ -8,12 +8,14 @@ from sqlalchemy import func
 def get_auto(params: dict, db: Session):
     query = db.query(Autos)
     data = list(params.items())
-
     for entry in data:
         field = entry[0]
         value = entry[1]
         if hasattr(Autos, field):
-            query = query.filter(func.lower(getattr(Autos, field)) == value.lower())
+            if isinstance(value, str):
+                query = query.filter(func.lower(getattr(Autos, field)) == value.lower())
+            else: # Para caso de não-strings que não podem ter lower
+                query = query.filter(getattr(Autos, field) == value)
     results = query.all()
 
     res = []

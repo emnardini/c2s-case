@@ -20,3 +20,7 @@ DATABASE_URL=postgresql://SEU_USUARIO:SUA_SENHA@localhost:5432/c2s;
 6. Iniciar o servidor FastAPI com "uvicorn app.main:app --reload";
 7. Rodar o programa com o comando "python client/agent.py" à partir de sua pasta raíz (em um terminal diferente do passo 6);
 8. Informar o carro que deseja usando linguagem natural;
+
+### TESTES ###
+
+Executar o comando "python -m pytest tests/" na raíz do projeto;
