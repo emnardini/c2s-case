@@ -4,6 +4,8 @@
 # 3. gerar um dicionário de normalização com grafias comuns de algumas marcas, como vw > volkswagen e alfa > alfa romeo
 # 4. tratar melhor casos onde quilometragem e preço são usados juntos no prompt
 # 5. tratar melhor casos onde o usuário pode pedir mais de um termo: ex: "quero um carro preto ou vermelho"
+# 6. tratamento de alguns bugs específicos, como "quero um carro 2 portas até 60 mil reais" que confunde o parseador de filtros
+# 7. os prompts com marcas e modelos ainda não cadastrados não preenchem nenhum filtro, e retornam a lista completa, da mesma forma que o promtp "me mostre todos os carros"
 # Infelizmente fiquei sem tempo para essas implementações
 
 import json

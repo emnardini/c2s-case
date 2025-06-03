@@ -7,7 +7,7 @@ def test_simple_request(): # Testa request simples
     assert filters == expected
 
 def test_request_with_price_range(): # Testa preço máximo
-    user_input = "Procuro um carro preto até 40 mil"
+    user_input = "Procuro um carro preto até 40 mil reais"
     filters = parse_user_request(user_input)
     assert filters["cor"] == "Preto"
     assert filters["max_price"] == 40000

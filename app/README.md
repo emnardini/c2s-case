@@ -16,7 +16,7 @@ Todos os comandos devem ser executados à partir da raíz do projeto
 3. criar um arquivo chamado ".env" na pasta app com o seguinte conteúdo:
 DATABASE_URL=postgresql://SEU_USUARIO:SUA_SENHA@localhost:5432/c2s;
 4. Inicializar as tabelas de dados com o comando "python -m app.init_db";
-5. Popular o banco com dados fictícios usando "$env:PYTHONPATH="."; python -m app.scripts.populate_auto";
+5. Popular o banco com dados fictícios usando "python -m app.scripts.populate_auto";
 6. Iniciar o servidor FastAPI com "uvicorn app.main:app --reload";
 7. Rodar o programa com o comando "python client/agent.py" (em um terminal diferente do passo 6);
 8. Informar o carro que deseja usando linguagem natural;
